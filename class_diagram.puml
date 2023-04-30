@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+
+enum ItemType {
+Element
+Box
+}
+
+ItemType *-- AItem
+abstract class AItem {
+- name : string
+- type : ItemType
+
+# AItem(name : string, type : ItemType)
+
++ GetName() : string
++ GetType() : ItemType
+}
+
+AItem <|-- Item
+class Item {
++ Item(name : string)
+}
+
+AItem <|-- List
+AItem o-- List
+class List {
+- list[] : AItem
+
++ List(name : string)
+
++ GetList() : AItem[]
+}
+
+@enduml
